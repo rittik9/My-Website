@@ -50,7 +50,7 @@ def build():
     pub_list = sorted(content.PUBLICATIONS.items(), key=lambda x: x[0], reverse=True)
     patent_list = sorted(content.PATENTS.items(), key=lambda x: x[0], reverse=True)
 
-    # About -> index.html
+    # About -> index.html (hero image from backend/assets/front.png)
     env.globals["request"] = type("Req", (), {"endpoint": "about"})()
     t = env.get_template("about.html")
     html = t.render(
@@ -60,6 +60,7 @@ def build():
         links=content.LINKS,
         news=content.NEWS,
         photos=content.PHOTOS,
+        hero_image_url=BASE_URL + "/static/front.png",
     )
     with open(os.path.join(BUILD_DIR, "index.html"), "w", encoding="utf-8") as f:
         f.write(html)
@@ -84,8 +85,11 @@ def build():
 
     # Static assets
     shutil.copytree(STATIC_DIR, os.path.join(BUILD_DIR, "static"), dirs_exist_ok=True)
-    # Merge: keep static/css, add front.png into static/
-    front_src = os.path.join(PROJECT_ROOT, "front.png")
+    # Hero image from backend/assets/front.png (or project root for local fallback)
+    backend_assets_dir = os.path.join(PROJECT_ROOT, "backend", "assets")
+    front_src = os.path.join(backend_assets_dir, "front.png")
+    if not os.path.isfile(front_src):
+        front_src = os.path.join(PROJECT_ROOT, "front.png")
     if os.path.isfile(front_src):
         shutil.copy2(front_src, os.path.join(BUILD_DIR, "static", "front.png"))
 

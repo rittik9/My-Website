@@ -7,13 +7,14 @@ Then open http://127.0.0.1:5000
 
 import os
 
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, url_for
 
 import content
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(BASE_DIR)
 FRONTEND_DIR = os.path.join(PROJECT_ROOT, "frontend")
+ASSETS_DIR = os.path.join(BASE_DIR, "assets")
 
 app = Flask(
     __name__,
@@ -27,10 +28,10 @@ def inject_name():
     return {"name": content.NAME}
 
 
-@app.route("/root/<path:filename>")
-def serve_root_file(filename):
-    """Serve files from project root (e.g. front.png)."""
-    return send_from_directory(PROJECT_ROOT, filename)
+@app.route("/assets/<path:filename>")
+def serve_assets(filename):
+    """Serve files from backend/assets/ (e.g. front.png)."""
+    return send_from_directory(ASSETS_DIR, filename)
 
 
 @app.route("/")
@@ -42,6 +43,7 @@ def about():
         links=content.LINKS,
         news=content.NEWS,
         photos=content.PHOTOS,
+        hero_image_url=url_for("serve_assets", filename="front.png"),
     )
 
 
