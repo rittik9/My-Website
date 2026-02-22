@@ -5,6 +5,8 @@ Site content — edit this file to update your website.
 # About
 NAME = "Rittik Panda"
 TAGLINE = "Research Associate at Multimodal Perception Lab, IIIT Bangalore"
+# Hero image: filename in backend/assets/ (e.g. front.jpg or front.png)
+HERO_IMAGE = "front.jpg"
 BIO = """
 Your main bio paragraph. You can use multiple lines.
 Edit this in content.py.

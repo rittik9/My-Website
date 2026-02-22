@@ -85,13 +85,14 @@ def build():
 
     # Static assets
     shutil.copytree(STATIC_DIR, os.path.join(BUILD_DIR, "static"), dirs_exist_ok=True)
-    # Hero image from backend/assets/front.png (or project root for local fallback)
+    # Hero image from backend/assets/ (filename from content.HERO_IMAGE)
+    hero_fname = getattr(content, "HERO_IMAGE", "front.png")
     backend_assets_dir = os.path.join(PROJECT_ROOT, "backend", "assets")
-    front_src = os.path.join(backend_assets_dir, "front.png")
-    if not os.path.isfile(front_src):
-        front_src = os.path.join(PROJECT_ROOT, "front.png")
-    if os.path.isfile(front_src):
-        shutil.copy2(front_src, os.path.join(BUILD_DIR, "static", "front.png"))
+    hero_src = os.path.join(backend_assets_dir, hero_fname)
+    if not os.path.isfile(hero_src):
+        hero_src = os.path.join(PROJECT_ROOT, hero_fname)
+    if os.path.isfile(hero_src):
+        shutil.copy2(hero_src, os.path.join(BUILD_DIR, "static", hero_fname))
 
     print("Built static site in", BUILD_DIR)
     print("BASE_URL =", repr(BASE_URL))
