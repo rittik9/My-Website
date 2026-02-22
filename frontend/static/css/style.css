@@ -68,14 +68,17 @@ body {
 
 .hero-photo-wrap {
     flex-shrink: 0;
-    width: 220px;
+    width: 250px;
+    height: 390px;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .hero-photo {
-    width: 220px;
-    height: 220px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    border-radius: 8px;
+    object-position: top center;
     display: block;
     background: #eee;
 }

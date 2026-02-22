@@ -50,7 +50,9 @@ def build():
     pub_list = sorted(content.PUBLICATIONS.items(), key=lambda x: x[0], reverse=True)
     patent_list = sorted(content.PATENTS.items(), key=lambda x: x[0], reverse=True)
 
-    # About -> index.html (hero image from backend/assets/front.png)
+    # About -> index.html (hero image: full URL or static path)
+    hero_fname = getattr(content, "HERO_IMAGE", "front.jpg")
+    hero_image_url = getattr(content, "HERO_IMAGE_URL", None) or (BASE_URL + "/static/" + hero_fname)
     env.globals["request"] = type("Req", (), {"endpoint": "about"})()
     t = env.get_template("about.html")
     html = t.render(
@@ -60,7 +62,7 @@ def build():
         links=content.LINKS,
         news=content.NEWS,
         photos=content.PHOTOS,
-        hero_image_url=BASE_URL + "/static/front.png",
+        hero_image_url=hero_image_url,
     )
     with open(os.path.join(BUILD_DIR, "index.html"), "w", encoding="utf-8") as f:
         f.write(html)
@@ -85,8 +87,8 @@ def build():
 
     # Static assets
     shutil.copytree(STATIC_DIR, os.path.join(BUILD_DIR, "static"), dirs_exist_ok=True)
-    # Hero image from backend/assets/ (filename from content.HERO_IMAGE)
-    hero_fname = getattr(content, "HERO_IMAGE", "front.png")
+    # Hero image from backend/assets/ (only if not using HERO_IMAGE_URL)
+    hero_fname = getattr(content, "HERO_IMAGE", "front.jpg")
     backend_assets_dir = os.path.join(PROJECT_ROOT, "backend", "assets")
     hero_src = os.path.join(backend_assets_dir, hero_fname)
     if not os.path.isfile(hero_src):

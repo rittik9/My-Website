@@ -43,7 +43,7 @@ def about():
         links=content.LINKS,
         news=content.NEWS,
         photos=content.PHOTOS,
-        hero_image_url=url_for("serve_assets", filename="front.png"),
+        hero_image_url=getattr(content, "HERO_IMAGE_URL", None) or url_for("serve_assets", filename=getattr(content, "HERO_IMAGE", "front.jpg")),
     )
 
 
