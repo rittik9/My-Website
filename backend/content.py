@@ -26,7 +26,7 @@ LINKS = [
     ("GitHub", "https://github.com/rittik9"),
     ("X", "https://x.com/rittik_panda"),
     ("LinkedIn", "https://www.linkedin.com/in/rittik-panda-752143169/"),
-    ("CV", "/static/cv.pdf"),
+    ("CV", "#cv-request"),
 ]
 
 # Recent news: list of (date, text)
