@@ -3,10 +3,6 @@
 {% block main %}
 <section class="hero">
     <div class="hero-row">
-        
-        <div class="hero-photo-wrap">
-            <img src="{{ hero_image_url }}" alt="{{ name }}" class="hero-photo">
-        </div>
 
         <div class="hero-text">
             <h1>{{ name }}</h1>
@@ -17,6 +13,10 @@
                 <a href="{{ url }}">{{ label }}</a>
                 {% endfor %}
             </div>
+        </div>
+
+        <div class="hero-photo-wrap">
+            <img src="{{ hero_image_url }}" alt="{{ name }}" class="hero-photo">
         </div>
 
     </div>
