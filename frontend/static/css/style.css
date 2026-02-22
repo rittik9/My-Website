@@ -68,8 +68,8 @@ body {
 
 .hero-photo-wrap {
     flex-shrink: 0;
-    width: 280px;
-    height: 280px;   /* Make it equal to width */
+    width: 400x;
+    height: 400px;   /* Make it equal to width */
     border-radius: 50%;  /* Circle */
     overflow: hidden;
 }
