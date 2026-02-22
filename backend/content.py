@@ -11,27 +11,29 @@ HERO_IMAGE = "front.png"
 # Option B: full URL (image loads from this URL; use if file not found locally)
 # Uncomment and set to your raw GitHub URL so the image always shows:
 HERO_IMAGE_URL = "https://raw.githubusercontent.com/rittik9/My-Website/master/backend/assets/front.png"
-BIO = """
-Your main bio paragraph. You can use multiple lines.
-Edit this in content.py.
-"""
+BIO = ""
+
+# """
+# Your main bio paragraph. You can use multiple lines.
+# Edit this in content.py.
+# """
 
 EMAIL = "your.email@example.com"
 
 # Links (label -> url)
 LINKS = [
     ("Scholar", "https://scholar.google.com"),
-    ("GitHub", "https://github.com/yourusername"),
-    ("X", "https://github.com/yourusername"),
-    ("LinkedIn", "https://linkedin.com/in/yourusername"),
+    ("GitHub", "https://github.com/rittik9"),
+    ("X", "https://x.com/rittik_panda"),
+    ("LinkedIn", "https://www.linkedin.com/in/rittik-panda-752143169/"),
     ("CV", "/static/cv.pdf"),
 ]
 
 # Recent news: list of (date, text)
 NEWS = [
-    ("Sep 25", "Awarded Outstanding Reviewer at <strong>ICCV 2025</strong>!"),
+    ("Sep 25", "Awarded Outstanding Reviewer at <strong>Conference 2025</strong>!"),
     ("Jun 25", "Our work on X accepted at <strong>Conference 2025</strong>!"),
-    ("Feb 25", "Paper Y and Z accepted at <strong>CVPR 2025</strong>!"),
+    ("Feb 25", "Paper Y and Z accepted at <strong>Conference 2025</strong>!"),
 ]
 
 # Publications: year -> list of {title, authors, venue, project_url, paper_url, code_url}
@@ -50,7 +52,7 @@ PUBLICATIONS = {
         {
             "title": "Another Paper",
             "authors": "You, Others",
-            "venue": "ECCV 2024",
+            "venue": "Conference 2025",
             "project_url": "#",
             "paper_url": "#",
             "code_url": None,
