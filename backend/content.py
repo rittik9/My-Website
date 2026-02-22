@@ -18,7 +18,7 @@ BIO = ""
 # Edit this in content.py.
 # """
 
-EMAIL = "your.email@example.com"
+EMAIL = "rittikpanda24@gmail.com"
 
 # Links (label -> url)
 LINKS = [
