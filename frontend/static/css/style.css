@@ -327,22 +327,43 @@ body {
     font-size: 0.95rem;
 }
 
-form {
-    max-width: 500px;
+.cv-modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.cv-modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 400px;
+    max-width: 90%;
+}
+
+.cv-close {
+    float: right;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.cv-modal form {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-top: 15px;
 }
 
-input, textarea {
+.cv-modal input,
+.cv-modal textarea {
     padding: 8px;
     border-radius: 6px;
     border: 1px solid #ccc;
-}
-
-button {
-    padding: 10px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
 }

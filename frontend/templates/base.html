@@ -7,6 +7,27 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
+<!-- CV Modal -->
+<div id="cv-modal" class="cv-modal">
+    <div class="cv-modal-content">
+        <span class="cv-close">&times;</span>
+        <h2>Request CV</h2>
+        <p>My CV is available upon request.</p>
+
+        <form action="https://formsubmit.co/rittikpanda24@gmail.com" method="POST">
+            <input type="hidden" name="_captcha" value="false">
+
+            <label>Your Email</label>
+            <input type="email" name="email" required>
+
+            <label>Purpose</label>
+            <textarea name="message" rows="4" required></textarea>
+
+            <button type="submit">Send Request</button>
+        </form>
+    </div>
+</div>
+
 <body>
     <header class="site-header">
         <nav class="nav container">
@@ -51,6 +72,25 @@
                 }
             });
 
+        });
+        // CV Modal Logic
+        const cvLink = document.querySelector("a[href='#']");
+        const modal = document.getElementById("cv-modal");
+        const closeBtn = document.querySelector(".cv-close");
+
+        cvLink.addEventListener("click", function(e) {
+            e.preventDefault();
+            modal.style.display = "flex";
+        });
+
+        closeBtn.addEventListener("click", function() {
+            modal.style.display = "none";
+        });
+
+        window.addEventListener("click", function(e) {
+            if (e.target === modal) {
+                modal.style.display = "none";
+            }
         });
     </script>
 
