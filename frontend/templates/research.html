@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}{{ name }} — Research{% endblock %}
+{% block main %}
+<section class="section">
+    <h2>Research Interests</h2>
+    <ul class="interest-list">
+        {% for item in research_interests %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+</section>
+
+<section class="section">
+    <h2>Publications</h2>
+    {% for year, items in publications %}
+    <h3 class="pub-year">{{ year }}</h3>
+    {% for pub in items %}
+    <div class="pub-item">
+        <div class="pub-title">{{ pub.title }}</div>
+        <div class="pub-authors">{{ pub.authors }}</div>
+        <div class="pub-venue">{{ pub.venue }}</div>
+        <div class="pub-links">
+            {% if pub.project_url %}<a href="{{ pub.project_url }}">Project</a>{% endif %}
+            {% if pub.paper_url %}<a href="{{ pub.paper_url }}">Paper</a>{% endif %}
+            {% if pub.code_url %}<a href="{{ pub.code_url }}">Code</a>{% endif %}
+        </div>
+    </div>
+    {% endfor %}
+    {% endfor %}
+</section>
+
+<section class="section">
+    <h2>Patents</h2>
+    {% if not patents %}<p class="muted">No patents yet.</p>{% endif %}
+    {% for year, items in patents %}
+    <h3 class="pub-year">{{ year }}</h3>
+    {% for patent in items %}
+    <div class="pub-item patent-item">
+        <div class="pub-title">{{ patent.title }}</div>
+        <div class="pub-authors">{{ patent.inventors }}</div>
+        <div class="pub-venue">{{ patent.number_or_status }}</div>
+        {% if patent.url %}
+        <div class="pub-links"><a href="{{ patent.url }}">Link</a></div>
+        {% endif %}
+    </div>
+    {% endfor %}
+    {% endfor %}
+</section>
+{% endblock %}

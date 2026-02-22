@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ name }}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav container">
+            <a href="{{ url_for('about') }}" class="{% if request.endpoint == 'about' %}nav-active{% endif %}">About</a>
+            <a href="{{ url_for('research') }}" class="{% if request.endpoint == 'research' %}nav-active{% endif %}">Research</a>
+            <a href="{{ url_for('blogs') }}" class="{% if request.endpoint == 'blogs' %}nav-active{% endif %}">Blogs</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        {% block main %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <p>Template inspired by academic personal pages.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}{{ name }} — About{% endblock %}
+{% block main %}
+<section class="hero">
+    <div class="hero-row">
+        <div class="hero-text">
+            <h1>{{ name }}</h1>
+            <p class="tagline">{{ tagline }}</p>
+            <p class="bio">{{ bio }}</p>
+            <div class="links">
+                {% for label, url in links %}
+                <a href="{{ url }}">{{ label }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="hero-photo-wrap">
+            <img src="{{ url_for('serve_root_file', filename='front.png') }}" alt="{{ name }}" class="hero-photo">
+        </div>
+    </div>
+</section>
+
+<section id="news" class="section">
+    <h2>Recent News</h2>
+    <ul class="news-list">
+        {% for date, text in news %}
+        <li><span class="news-date">[{{ date }}]</span> {{ text|safe }}</li>
+        {% endfor %}
+    </ul>
+</section>
+
+{% if photos %}
+<section id="gallery" class="section">
+    <h2>Gallery</h2>
+    <div class="gallery">
+        {% for path in photos %}
+        <img src="{{ url_for('static', filename=path) }}" alt="Photo">
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+{% endblock %}
