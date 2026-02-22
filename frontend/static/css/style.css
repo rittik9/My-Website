@@ -274,3 +274,55 @@ body {
     color: #777;
     font-style: italic;
 }
+
+/* Default Light Theme */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #111111;
+    --secondary-text: #555555;
+    --nav-bg: #ffffff;
+}
+
+/* Dark Theme */
+body.dark-mode {
+    --bg-color: #0f172a;
+    --text-color: #f1f5f9;
+    --secondary-text: #94a3b8;
+    --nav-bg: #111827;
+}
+
+/* Apply Variables */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.site-header {
+    background-color: var(--nav-bg);
+}
+
+.tagline {
+    color: var(--secondary-text);
+}
+
+.theme-toggle {
+    margin-left: auto;
+    background: none;
+    border: 1px solid var(--text-color);
+    padding: 4px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.hero-photo-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-email {
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+}

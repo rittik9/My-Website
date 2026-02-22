@@ -40,6 +40,7 @@ def about():
         "about.html",
         tagline=content.TAGLINE,
         bio=content.BIO.strip(),
+        email= content.EMAIL,
         links=content.LINKS,
         news=content.NEWS,
         photos=content.PHOTOS,

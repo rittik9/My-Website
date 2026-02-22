@@ -6,12 +6,15 @@
     <title>{% block title %}{{ name }}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
     <header class="site-header">
         <nav class="nav container">
             <a href="{{ url_for('about') }}" class="{% if request.endpoint == 'about' %}nav-active{% endif %}">About</a>
             <a href="{{ url_for('research') }}" class="{% if request.endpoint == 'research' %}nav-active{% endif %}">Research</a>
             <a href="{{ url_for('blogs') }}" class="{% if request.endpoint == 'blogs' %}nav-active{% endif %}">Blogs</a>
+    
+            <button id="theme-toggle" class="theme-toggle">🌙</button>
         </nav>
     </header>
 
@@ -22,5 +25,34 @@
     <footer class="site-footer">
         <p>Template inspired by academic personal pages.</p>
     </footer>
+
+    <!-- FIXED SCRIPT (only change) -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const toggleBtn = document.getElementById("theme-toggle");
+            const body = document.body;
+
+            // Load saved theme
+            if (localStorage.getItem("theme") === "dark") {
+                body.classList.add("dark-mode");
+                toggleBtn.textContent = "☀️";
+            }
+
+            toggleBtn.addEventListener("click", () => {
+                body.classList.toggle("dark-mode");
+
+                if (body.classList.contains("dark-mode")) {
+                    localStorage.setItem("theme", "dark");
+                    toggleBtn.textContent = "☀️";
+                } else {
+                    localStorage.setItem("theme", "light");
+                    toggleBtn.textContent = "🌙";
+                }
+            });
+
+        });
+    </script>
+
 </body>
 </html>

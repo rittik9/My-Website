@@ -15,8 +15,15 @@
             </div>
         </div>
 
-        <div class="hero-photo-wrap">
-            <img src="{{ hero_image_url }}" alt="{{ name }}" class="hero-photo">
+        <!-- Photo + Email Column -->
+        <div class="hero-photo-column">
+            <div class="hero-photo-wrap">
+                <img src="{{ hero_image_url }}" alt="{{ name }}" class="hero-photo">
+            </div>
+
+            <p class="hero-email">
+                <a href="mailto:{{ email }}">{{ email }}</a>
+            </p>
         </div>
 
     </div>

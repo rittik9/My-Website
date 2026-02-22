@@ -7,21 +7,23 @@ NAME = "Rittik Panda"
 TAGLINE = "Research Associate at Multimodal Perception Lab, IIIT Bangalore"
 # Hero image: use EITHER a filename in backend/assets/ OR a full URL.
 # Option A: filename (served from backend/assets/ or built into static/)
-HERO_IMAGE = "front2_1.png"
+HERO_IMAGE = "front.png"
 # Option B: full URL (image loads from this URL; use if file not found locally)
 # Uncomment and set to your raw GitHub URL so the image always shows:
-HERO_IMAGE_URL = "https://raw.githubusercontent.com/rittik9/My-Website/master/backend/assets/front2_1.png"
+HERO_IMAGE_URL = "https://raw.githubusercontent.com/rittik9/My-Website/master/backend/assets/front.png"
 BIO = """
 Your main bio paragraph. You can use multiple lines.
 Edit this in content.py.
 """
 
+EMAIL = "your.email@example.com"
+
 # Links (label -> url)
 LINKS = [
-    ("Email", "mailto:your.email@example.com"),
     ("Scholar", "https://scholar.google.com"),
-    ("LinkedIn", "https://linkedin.com/in/yourusername"),
     ("GitHub", "https://github.com/yourusername"),
+    ("X", "https://github.com/yourusername"),
+    ("LinkedIn", "https://linkedin.com/in/yourusername"),
     ("CV", "/static/cv.pdf"),
 ]
 
