@@ -62,3 +62,31 @@ My-Website/
 - **Styling** — Edit `frontend/static/css/style.css`.
 
 No database or build step. Change files and refresh the browser.
+
+---
+
+## Deploy to GitHub Pages
+
+The site can be deployed as a **static** version to GitHub Pages (no Python on the server).
+
+### One-time setup
+
+1. In your repo: **Settings → Pages**.
+2. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+
+### What’s included
+
+- **`.github/workflows/deploy-pages.yml`** — On every push to `main` or `master`, builds static HTML into `build/` and deploys it to GitHub Pages.
+- **`backend/build_static.py`** — Renders all pages with your content and copies assets (CSS, `front.png`) into `build/`. Run locally with:
+  ```bash
+  BASE_URL=/My-Website python backend/build_static.py
+  ```
+  (Use your repo name for `BASE_URL`; the workflow sets this automatically.)
+
+### After setup
+
+Push to `main` (or `master`). The **Actions** tab will show the workflow; when it finishes, the site is at:
+
+**https://&lt;username&gt;.github.io/&lt;repo-name&gt;/**
+
+Example: `https://rittik9.github.io/My-Website/`
