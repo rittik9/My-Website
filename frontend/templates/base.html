@@ -10,21 +10,53 @@
 <!-- CV Modal -->
 <div id="cv-modal" class="cv-modal">
     <div class="cv-modal-content">
-        <span class="cv-close">&times;</span>
-        <h2>Request CV</h2>
-        <p>CV is available upon request. Kindly fill the form.</p>
+  
+      <button class="cv-close">&times;</button>
+  
+      <h2>Request CV</h2>
+      <p class="cv-subtext">CV is available upon request.</p>
+  
+      <form id="cvForm">
+        <input type="hidden" name="_captcha" value="false">
+  
+        <!-- Email -->
+        <div class="form-group">
+          <label>Kindly enter your email.</label>
+          <input 
+            type="email" 
+            id="userEmail"
+            name="email"
+            required 
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+            placeholder="Your email">
+        </div>
+  
+        <!-- Purpose -->
+        <div class="form-group">
+          <label>Briefly tell us about your purpose.</label>
+          <textarea name="message" rows="4" required></textarea>
+        </div>
+  
+        <!-- CAPTCHA (Now placed LAST) -->
+        <div class="form-group">
+          <label>Enter CAPTCHA</label>
+  
+          <div class="captcha-row">
+            <span id="captcha-code" class="captcha-code"></span>
+            <button type="button" id="refresh-captcha" class="captcha-refresh">↻</button>
+          </div>
+  
+          <input type="text" id="captcha-input" placeholder="Enter code above" required>
+        </div>
+  
+        <button type="submit" class="submit-btn">Send Request</button>
+      </form>
 
-        <form action="https://formsubmit.co/rittikpanda24@gmail.com" method="POST">
-            <input type="hidden" name="_captcha" value="false">
-
-            <label>Your Email</label>
-            <input type="email" name="Email" required>
-
-            <label>Purpose</label>
-            <textarea name="message" rows="4" required></textarea>
-
-            <button type="submit">Send Request</button>
-        </form>
+      <div id="successMessage" style="display:none; text-align:center; padding:20px;">
+        <h3>Request Sent ✅</h3>
+        <button id="doneBtn" class="send-btn">Done</button>
+      </div>
+  
     </div>
 </div>
 
@@ -92,7 +124,85 @@
                 modal.style.display = "none";
             }
         });
+
+        // CAPTCHA logic
+        function generateCaptcha() {
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            let result = "";
+            for (let i = 0; i < 6; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            document.getElementById("captcha-code").textContent = result;
+            return result;
+        }
+
+        let currentCaptcha = generateCaptcha();
+
+        document.getElementById("refresh-captcha").addEventListener("click", function() {
+            currentCaptcha = generateCaptcha();
+        });
+
+        document.querySelector(".cv-modal form").addEventListener("submit", function(e) {
+            const userInput = document.getElementById("captcha-input").value;
+            if (userInput !== currentCaptcha) {
+                e.preventDefault();
+                alert("Incorrect CAPTCHA. Please try again.");
+                currentCaptcha = generateCaptcha();
+            }
+        });
     </script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    
+        const form = document.getElementById("cvForm");
+        const successMessage = document.getElementById("successMessage");
+        const modal = document.getElementById("cv-modal");
+        const doneBtn = document.getElementById("doneBtn");
+    
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+    
+            // Validate email + textarea
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+    
+            // CAPTCHA check
+            const userInput = document.getElementById("captcha-input").value;
+            if (userInput !== currentCaptcha) {
+                alert("Incorrect CAPTCHA. Please try again.");
+                currentCaptcha = generateCaptcha();
+                return;
+            }
+    
+            // Hide everything except success
+            form.style.display = "none";
+            document.querySelector(".cv-modal-content h2").style.display = "none";
+            document.querySelector(".cv-subtext").style.display = "none";
+
+            // Show success message
+            successMessage.style.display = "block";
+        });
+    
+        doneBtn.addEventListener("click", function() {
+        modal.style.display = "none";
+
+        // Reset form + UI
+        form.reset();
+        form.style.display = "block";
+        successMessage.style.display = "none";
+
+        document.querySelector(".cv-modal-content h2").style.display = "block";
+        document.querySelector(".cv-subtext").style.display = "block";
+
+        currentCaptcha = generateCaptcha();
+        });
+
+    });
+    </script>
+    
 
 </body>
 </html>
