@@ -3,8 +3,8 @@ Site content — edit this file to update your website.
 """
 
 # About
-NAME = "Your Name"
-TAGLINE = "Short tagline (e.g. PhD Student at XYZ)"
+NAME = "Rittik Panda"
+TAGLINE = "Research Associate at Multi-modal Perception Lab, IIIT Bangalore"
 BIO = """
 Your main bio paragraph. You can use multiple lines.
 Edit this in content.py.
