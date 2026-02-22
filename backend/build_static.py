@@ -59,6 +59,7 @@ def build():
         name=content.NAME,
         tagline=content.TAGLINE,
         bio=content.BIO.strip(),
+        email=content.EMAIL,   # ← ADD THIS LINE
         links=content.LINKS,
         news=content.NEWS,
         photos=content.PHOTOS,
