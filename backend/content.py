@@ -22,7 +22,7 @@ EMAIL = "rittikpanda24@gmail.com"
 
 # Links (label -> url)
 LINKS = [
-    ("Scholar", "https://scholar.google.co.in/citations?hl=en&user=G4u8V1YAAAAJ&view_op=list_works&gmla=ACrTK9XOcBLQDngu20Yuq1cyUYHehQzIXaeiIeYFH1QWWwv9HDZjN27kYGlULoWQHAusTd_YndWAbNMMP5xzExSboi6SOCQTA1VnjGx6XQtaB2zwR9bMvTDsqq1L3TZBE7ZhQA3r"),
+    ("Scholar", "https://scholar.google.com/citations?user=G4u8V1YAAAAJ&hl=en"),
     ("GitHub", "https://github.com/rittik9"),
     ("X", "https://x.com/rittik_panda"),
     ("LinkedIn", "https://www.linkedin.com/in/rittik-panda-752143169/"),
